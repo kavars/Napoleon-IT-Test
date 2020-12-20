@@ -25,7 +25,7 @@ class CustomSegmentedView: UIView {
         
         button.setTitle("Топ 10", for: .normal)
         button.titleLabel?.textAlignment = .center
-        
+        button.titleLabel?.font = .systemFont(ofSize: 14)
         button.setTitleColor(.darkGray, for: .normal)
         button.setTitleColor(.buttonTintBlue, for: .selected)
         
@@ -41,7 +41,7 @@ class CustomSegmentedView: UIView {
         
         button.setTitle("Магазины", for: .normal)
         button.titleLabel?.textAlignment = .center
-        
+        button.titleLabel?.font = .systemFont(ofSize: 14)
         button.setTitleColor(.darkGray, for: .normal)
         button.setTitleColor(.buttonTintBlue, for: .selected)
         
@@ -57,7 +57,7 @@ class CustomSegmentedView: UIView {
         
         button.setTitle("Товары", for: .normal)
         button.titleLabel?.textAlignment = .center
-        
+        button.titleLabel?.font = .systemFont(ofSize: 14)
         button.setTitleColor(.darkGray, for: .normal)
         button.setTitleColor(.buttonTintBlue, for: .selected)
         

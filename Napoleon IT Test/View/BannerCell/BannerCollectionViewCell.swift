@@ -136,15 +136,15 @@ class BannerCollectionViewCell: UICollectionViewCell {
             blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             blurView.heightAnchor.constraint(equalToConstant: 60),
             
-            // TODO: Check title & description constraints
             titleLabel.topAnchor.constraint(equalTo: blurView.contentView.topAnchor, constant: 8),
             titleLabel.leadingAnchor.constraint(equalTo: blurView.contentView.leadingAnchor, constant: 8),
             titleLabel.trailingAnchor.constraint(equalTo: blurView.contentView.trailingAnchor, constant: -8),
             
-            descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 4),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             descriptionLabel.leadingAnchor.constraint(equalTo: blurView.contentView.leadingAnchor, constant: 8),
             descriptionLabel.trailingAnchor.constraint(equalTo: blurView.contentView.trailingAnchor, constant: -8),
-            descriptionLabel.bottomAnchor.constraint(equalTo: blurView.contentView.bottomAnchor, constant: -8),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 14),
+            descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: blurView.contentView.bottomAnchor, constant: -8),
             
             imageActivityIndicator.centerYAnchor.constraint(equalTo: bannerImage.centerYAnchor),
             imageActivityIndicator.centerXAnchor.constraint(equalTo: bannerImage.centerXAnchor)
