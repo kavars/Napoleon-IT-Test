@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E6B9A0C258E590C00093BD6 /* BannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B9A0B258E590C00093BD6 /* BannerTableViewCell.swift */; };
+		7E6B9A0F258E596F00093BD6 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B9A0E258E596F00093BD6 /* BannerCollectionViewCell.swift */; };
 		7E706460258DEC7800ACA189 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E70645F258DEC7800ACA189 /* AppDelegate.swift */; };
 		7E706462258DEC7800ACA189 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E706461258DEC7800ACA189 /* SceneDelegate.swift */; };
 		7E706467258DEC7800ACA189 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E706465258DEC7800ACA189 /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E6B9A0B258E590C00093BD6 /* BannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableViewCell.swift; sourceTree = "<group>"; };
+		7E6B9A0E258E596F00093BD6 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E70645C258DEC7800ACA189 /* Napoleon IT Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Napoleon IT Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E70645F258DEC7800ACA189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E706461258DEC7800ACA189 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 		7E734C39258E5100005034F5 /* BannerCell */ = {
 			isa = PBXGroup;
 			children = (
+				7E6B9A0B258E590C00093BD6 /* BannerTableViewCell.swift */,
+				7E6B9A0E258E596F00093BD6 /* BannerCollectionViewCell.swift */,
 			);
 			path = BannerCell;
 			sourceTree = "<group>";
@@ -234,11 +240,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E6B9A0C258E590C00093BD6 /* BannerTableViewCell.swift in Sources */,
 				7E734C32258E211D005034F5 /* UIImage+loadImage.swift in Sources */,
 				7E734C2A258E137E005034F5 /* OfferTableViewCell.swift in Sources */,
 				7E734C22258E0458005034F5 /* ErrorModel.swift in Sources */,
 				7E706460258DEC7800ACA189 /* AppDelegate.swift in Sources */,
 				7E734C13258E0130005034F5 /* MainTableViewController.swift in Sources */,
+				7E6B9A0F258E596F00093BD6 /* BannerCollectionViewCell.swift in Sources */,
 				7E734C1F258E0399005034F5 /* OfferModel.swift in Sources */,
 				7E734C16258E01CF005034F5 /* NetworkService.swift in Sources */,
 				7E734C36258E4962005034F5 /* UIColor+extension.swift in Sources */,
