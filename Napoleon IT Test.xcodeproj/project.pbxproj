@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E49A765258FB080007B47C7 /* CustomSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E49A764258FB080007B47C7 /* CustomSegmentedView.swift */; };
+		7E49A76C258FD6E2007B47C7 /* UIImageView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E49A76B258FD6E2007B47C7 /* UIImageView+extension.swift */; };
 		7E6B9A0C258E590C00093BD6 /* BannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B9A0B258E590C00093BD6 /* BannerTableViewCell.swift */; };
 		7E6B9A0F258E596F00093BD6 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B9A0E258E596F00093BD6 /* BannerCollectionViewCell.swift */; };
 		7E706460258DEC7800ACA189 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E70645F258DEC7800ACA189 /* AppDelegate.swift */; };
@@ -21,11 +23,13 @@
 		7E734C22258E0458005034F5 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E734C21258E0458005034F5 /* ErrorModel.swift */; };
 		7E734C2A258E137E005034F5 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E734C28258E137E005034F5 /* OfferTableViewCell.swift */; };
 		7E734C2B258E137E005034F5 /* OfferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E734C29258E137E005034F5 /* OfferTableViewCell.xib */; };
-		7E734C32258E211D005034F5 /* UIImage+loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E734C31258E211D005034F5 /* UIImage+loadImage.swift */; };
+		7E734C32258E211D005034F5 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E734C31258E211D005034F5 /* UIImage+extension.swift */; };
 		7E734C36258E4962005034F5 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E734C35258E4962005034F5 /* UIColor+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E49A764258FB080007B47C7 /* CustomSegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedView.swift; sourceTree = "<group>"; };
+		7E49A76B258FD6E2007B47C7 /* UIImageView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extension.swift"; sourceTree = "<group>"; };
 		7E6B9A0B258E590C00093BD6 /* BannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableViewCell.swift; sourceTree = "<group>"; };
 		7E6B9A0E258E596F00093BD6 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E70645C258DEC7800ACA189 /* Napoleon IT Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Napoleon IT Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,7 +46,7 @@
 		7E734C21258E0458005034F5 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		7E734C28258E137E005034F5 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
 		7E734C29258E137E005034F5 /* OfferTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferTableViewCell.xib; sourceTree = "<group>"; };
-		7E734C31258E211D005034F5 /* UIImage+loadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+loadImage.swift"; sourceTree = "<group>"; };
+		7E734C31258E211D005034F5 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
 		7E734C35258E4962005034F5 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,8 +84,9 @@
 		7E407C27258E557600ABA5EB /* UIKit Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7E734C31258E211D005034F5 /* UIImage+loadImage.swift */,
+				7E734C31258E211D005034F5 /* UIImage+extension.swift */,
 				7E734C35258E4962005034F5 /* UIColor+extension.swift */,
+				7E49A76B258FD6E2007B47C7 /* UIImageView+extension.swift */,
 			);
 			path = "UIKit Extensions";
 			sourceTree = "<group>";
@@ -92,6 +97,14 @@
 				7E734C12258E0130005034F5 /* MainTableViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		7E49A76F258FD82A007B47C7 /* CustomSegmentedView */ = {
+			isa = PBXGroup;
+			children = (
+				7E49A764258FB080007B47C7 /* CustomSegmentedView.swift */,
+			);
+			path = CustomSegmentedView;
 			sourceTree = "<group>";
 		};
 		7E706453258DEC7800ACA189 = {
@@ -145,6 +158,7 @@
 		7E734C27258E1365005034F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E49A76F258FD82A007B47C7 /* CustomSegmentedView */,
 				7E734C39258E5100005034F5 /* BannerCell */,
 				7E734C38258E50F7005034F5 /* OfferCell */,
 			);
@@ -241,7 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E6B9A0C258E590C00093BD6 /* BannerTableViewCell.swift in Sources */,
-				7E734C32258E211D005034F5 /* UIImage+loadImage.swift in Sources */,
+				7E734C32258E211D005034F5 /* UIImage+extension.swift in Sources */,
 				7E734C2A258E137E005034F5 /* OfferTableViewCell.swift in Sources */,
 				7E734C22258E0458005034F5 /* ErrorModel.swift in Sources */,
 				7E706460258DEC7800ACA189 /* AppDelegate.swift in Sources */,
@@ -250,7 +264,9 @@
 				7E734C1F258E0399005034F5 /* OfferModel.swift in Sources */,
 				7E734C16258E01CF005034F5 /* NetworkService.swift in Sources */,
 				7E734C36258E4962005034F5 /* UIColor+extension.swift in Sources */,
+				7E49A765258FB080007B47C7 /* CustomSegmentedView.swift in Sources */,
 				7E706462258DEC7800ACA189 /* SceneDelegate.swift in Sources */,
+				7E49A76C258FD6E2007B47C7 /* UIImageView+extension.swift in Sources */,
 				7E734C1C258E0345005034F5 /* BannerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

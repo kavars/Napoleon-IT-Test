@@ -23,6 +23,8 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buildNavigationBar()
+                
         tableView.register(BannerTableViewCell.self, forCellReuseIdentifier: BannerTableViewCell.cellID)
         tableView.register(UINib(nibName: "OfferTableViewCell", bundle: nil), forCellReuseIdentifier: OfferTableViewCell.cellID)
 
@@ -30,7 +32,63 @@ class MainTableViewController: UITableViewController {
         loadBanners()
     }
     
+    // MARK: - Actions
+    @objc func infoButtonTapped() {
+        createAndPresentAlert(with: "Info button tapped", and: "Модальный экран")
+    }
+    
     // MARK: - Helpers
+    func buildNavigationBar() {
+        let customSegmentedView = CustomSegmentedView()
+        customSegmentedView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let searchBar = UISearchBar()
+        
+        // Search bar
+        searchBar.placeholder = "Поиск"
+        searchBar.returnKeyType = .default
+        searchBar.showsBookmarkButton = true
+        searchBar.enablesReturnKeyAutomatically = false
+        searchBar.setImage(UIImage(systemName: "mic.fill"), for: .bookmark, state: .normal)
+        searchBar.delegate = self
+        
+        searchBar.scopeBarBackgroundImage = UIImage(color: UIColor(white: 1.0, alpha: 0.0))
+
+        // Replace scope bar to custom segmented view
+        searchBar.showsScopeBar = true
+        searchBar.scopeButtonTitles = ["1"] // activate - _UISearchBarScopeContainerView
+        navigationItem.titleView = searchBar
+        
+        // Add segmented view to view
+        searchBar.subviews.forEach {
+            for subView in $0.subviews {
+                
+                if NSStringFromClass(subView.classForCoder) == "_UISearchBarScopeContainerView" {
+                    for subViewInSubView in subView.subviews {
+                        if NSStringFromClass(subViewInSubView.classForCoder) == "UISegmentedControl" {
+
+                            subViewInSubView.removeFromSuperview()
+                            subView.addSubview(customSegmentedView)
+                            
+                            NSLayoutConstraint.activate([
+                                customSegmentedView.topAnchor.constraint(equalTo: subView.topAnchor),
+                                customSegmentedView.leadingAnchor.constraint(equalTo: subView.leadingAnchor),
+                                customSegmentedView.trailingAnchor.constraint(equalTo: subView.trailingAnchor),
+                                customSegmentedView.bottomAnchor.constraint(equalTo: subView.bottomAnchor)
+                            ])
+                        }
+                    }
+                }
+            }
+        }
+                
+        // Info button
+        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
+        infoButton.tintColor = .buttonTintBlue
+        
+//        navigationItem.rightBarButtonItem = infoButton
+    }
+    
     func loadBanners() {
         networkService.getBanners { (banners) in
             
@@ -40,7 +98,7 @@ class MainTableViewController: UITableViewController {
                 self.tableView.reloadSections([0], with: .automatic)
             }
         } failure: { (error) in
-            self.createAndPresentErrorAlert(with: error)
+            self.createAndPresentAlert(with: "Error", and: error)
         }
 
     }
@@ -64,14 +122,14 @@ class MainTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         } failure: { (error) in
-            self.createAndPresentErrorAlert(with: error)
+            self.createAndPresentAlert(with: "Error", and: error)
         }
     }
     
-    func createAndPresentErrorAlert(with message: String) {
+    func createAndPresentAlert(with title: String, and message: String) {
         DispatchQueue.main.async {
-            let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default)
+            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Закрыть", style: .default)
             alertVC.addAction(okAction)
             
             self.present(alertVC, animated: true)
@@ -161,4 +219,10 @@ class MainTableViewController: UITableViewController {
         }
     }
 
+}
+
+extension MainTableViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

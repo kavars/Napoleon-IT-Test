@@ -1,8 +1,8 @@
 //
-//  UIImage+loadImage.swift
+//  UIImageView+extension.swift
 //  Napoleon IT Test
 //
-//  Created by Kirill Varshamov on 19.12.2020.
+//  Created by Kirill Varshamov on 20.12.2020.
 //
 
 import UIKit
