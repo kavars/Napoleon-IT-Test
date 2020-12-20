@@ -23,13 +23,12 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buildNavigationBar()
-                
         tableView.register(BannerTableViewCell.self, forCellReuseIdentifier: BannerTableViewCell.cellID)
         tableView.register(UINib(nibName: "OfferTableViewCell", bundle: nil), forCellReuseIdentifier: OfferTableViewCell.cellID)
 
         loadOffers()
         loadBanners()
+        buildNavigationBar()
     }
     
     // MARK: - Actions
@@ -51,6 +50,8 @@ class MainTableViewController: UITableViewController {
         searchBar.enablesReturnKeyAutomatically = false
         searchBar.setImage(UIImage(systemName: "mic.fill"), for: .bookmark, state: .normal)
         searchBar.delegate = self
+        
+        searchBar.showsCancelButton = true
         
         searchBar.scopeBarBackgroundImage = UIImage(color: UIColor(white: 1.0, alpha: 0.0))
 
@@ -79,22 +80,40 @@ class MainTableViewController: UITableViewController {
                         }
                     }
                 }
+                
+                // Change "cancel" button to "info" button
+                if NSStringFromClass(subView.classForCoder) == "_UISearchBarSearchContainerView" {
+                    for subViewInSubView in subView.subviews {
+                        if NSStringFromClass(subViewInSubView.classForCoder) == "UINavigationButton" {
+                            if let button = subViewInSubView as? UIButton {
+                                
+                                button.setTitle(nil, for: .normal)
+                                button.setImage(UIImage(systemName: "info.circle"), for: .normal)
+                                button.imageView?.contentMode = .scaleAspectFill
+                                let config = UIImage.SymbolConfiguration(pointSize: 20)
+                                button.setPreferredSymbolConfiguration(config, forImageIn: .normal)
+                                button.tintColor = .buttonTintBlue
+                                button.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+                                button.isEnabled = true
+                            }
+                        }
+                    }
+                }
             }
         }
                 
         // Info button
-        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
-        infoButton.tintColor = .buttonTintBlue
-        
+//        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
+//        infoButton.tintColor = .buttonTintBlue
+//
 //        navigationItem.rightBarButtonItem = infoButton
     }
     
     func loadBanners() {
         networkService.getBanners { (banners) in
             
-            self.banners = banners
-            
             DispatchQueue.main.async {
+                self.banners = banners
                 self.tableView.reloadSections([0], with: .automatic)
             }
         } failure: { (error) in
@@ -105,20 +124,22 @@ class MainTableViewController: UITableViewController {
     
     func loadOffers() {
         networkService.getOffers { (offers) in
-            self.offersByCategories = [:]
-            self.categoryKeys = []
+            var offersByCategories: [String: [OfferModel]] = [:]
+            var categoryKeys: [String] = []
             
             for offer in offers {
-                if self.offersByCategories[offer.groupName] == nil {
+                if offersByCategories[offer.groupName] == nil {
                     // Create category & add key
-                    self.offersByCategories[offer.groupName] = [offer]
-                    self.categoryKeys.append(offer.groupName)
+                    offersByCategories[offer.groupName] = [offer]
+                    categoryKeys.append(offer.groupName)
                 } else {
-                    self.offersByCategories[offer.groupName]?.append(offer)
+                    offersByCategories[offer.groupName]?.append(offer)
                 }
             }
             
             DispatchQueue.main.async {
+                self.offersByCategories = offersByCategories
+                self.categoryKeys = categoryKeys
                 self.tableView.reloadData()
             }
         } failure: { (error) in
